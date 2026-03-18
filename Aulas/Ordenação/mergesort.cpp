@@ -38,7 +38,7 @@ void merge(int *a, int tam)
     int *aux = new int[tam];
 
     // Ponteiros para localização
-    int i = 0; (inicio);
+    int i = 0; // inicio;
     int j = meio;
     int k = 0;
 
@@ -48,29 +48,41 @@ void merge(int *a, int tam)
         // Se o inicio é menor ou igual oa meio
         if(a[i] <= a[j])
         {
+            
             //Coloca o primeiro valor do vetor no primeiro do aux
             aux[k] = a[i];
+            k++;
             i++;
         } 
 
         // Se o inicio for maior que o meio (valores invertidos)
         else
         {
+            cout << "Troca lógica: " << a[i] << " > " << a[j] << endl;
             // Coloca o segundo valor (valor maior) no primeiro do auxiliar.
             aux[k] = a[j];
-            i++;
+            k++;
+            j++;
         }
-
-        // Passa para o proximo valor do auxiliar
-        k++;
     }
 
-    // Como um lado pode acabar antes do outro, precisamos de whiles separados
+    // Possíveis sobras
+    // Lado esquerdo
+    while(i < meio){
+        aux[k] = a[i];
+        k++;
+        i++;
+    }
 
-
+    // Lado direito
+    while(j < tam){
+        aux[k] = a[j];
+        k++;
+        j++;
+    }
 
     // Copia auxiliar para vetor original
-    for(int x = 0, i < tam; i++)
+    for(int x = 0; x < tam; x++)
     {
         a[x] = aux[x];
     }
@@ -78,19 +90,13 @@ void merge(int *a, int tam)
     // Por fim, deleta aux da memória
     delete[] aux;
 
-
-    cout << endl << "a[0] = " <<  a[0] << endl << "a[1] = " <<  a[1] << endl;
-    if(a[0] > a[1]) swap(a[0], a[1]);
-    cout << "swap";
-    cout << endl << "a[0] = " <<  a[0] << endl << "a[1] = " <<  a[1] << endl;
-    
     print(a, tam);
 }
 
 
 int main()
 {
-    int a[] = {9, 8, 7, 6, 5};
+    int a[] = {9, 8, 7, 6, 5, 4, 3};
     int tam = sizeof(a) / sizeof(a[0]);
 
    // print(a, tam);
