@@ -77,6 +77,9 @@ void print( int v[], int size, int b, int elem, int sp )  {
     }
 }
 
+// Repetir a remoção do maior elemento (raiz)
+// Colocar esse elemento na posição final de um vetor
+
 void sort(int v[], int size)
 {
     
